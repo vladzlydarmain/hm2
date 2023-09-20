@@ -1,6 +1,25 @@
-let name = "Vlad"
-let surname = "Zlydar"
-let age = 14
-let hobby = "грати з друзями"
+let readline = require("readline");
+let rl = readline.createInterface({
+    input:process.stdin,
+    output:process.stdout
+})
 
-console.log(`Мене звати ${name} ${surname} мені ${age} років, у вільний час я полюбляю ${hobby}`)
+rl.question("Enter coefficient - a ", (a) => {
+    rl.question("Enter coefficient - b ", (b) => {
+        rl.question("Enter coefficient - c ", (c) => {
+            a = parseFloat(a);
+            b = parseFloat(b);
+            c = parseFloat(c);
+            let d = b**2 - 4*a*c;
+            if (d < 0){
+                console.log("Коренів немає")
+            } else if(d == 0){
+                console.log(-b/(2*a))
+            } else if(d > 0){
+                let x1 = (-b-Math.sqrt(d))/(2*a)
+                let x2 = (-b+Math.sqrt(d))/(2*a)
+                console.log(`Перший корінь = ${x1}, другий корінь = ${x2}`)
+            }
+        })
+    })
+}) 
